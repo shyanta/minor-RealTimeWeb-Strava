@@ -7,7 +7,7 @@ var io = require('socket.io');
 
 // Declare app Routers
 var indexRouter = require('./routes/home');
-// var mainRouter = require('./routes/main');
+var mainRouter = require('./routes/main');
 var oauthRouter = require('./routes/oauth');
 
 // Set view engine to .ejs and tell app where these files are placed
@@ -19,7 +19,7 @@ app.use(express.static('public'));
 // Declare routes for the app to listen to
 app.get('/', indexRouter);
 app.get('/oauth', oauthRouter);
-// app.get('/main', mainRouter);
+app.get('/main', mainRouter);
 
 app.get('/*', function(req, res){
 	res.render('404');
