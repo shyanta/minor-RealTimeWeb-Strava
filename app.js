@@ -18,7 +18,7 @@ app.use(express.static('public'));
 
 // Declare routes for the app to listen to
 app.get('/', indexRouter);
-app.get('/oauth', oauthRouter);
+app.get('/oauth*', oauthRouter);
 app.get('/main', mainRouter);
 
 app.get('/*', function(req, res){
