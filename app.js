@@ -3,10 +3,11 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var ejs = require('ejs');
+require('dotenv').config();
 var io = require('socket.io');
 
 // Declare app Routers
-var indexRouter = require('./routes/home');
+var indexRouter = require('./routes/index');
 var mainRouter = require('./routes/main');
 var oauthRouter = require('./routes/oauth');
 
