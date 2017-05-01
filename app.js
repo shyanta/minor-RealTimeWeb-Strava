@@ -17,9 +17,9 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 // Declare routes for the app to listen to
-app.get('/', indexRouter);
-app.get('/oauth*', oauthRouter);
-app.get('/main', mainRouter);
+app.use('/', indexRouter);
+app.use('/oauth', oauthRouter);
+app.use('/main', mainRouter);
 
 app.get('/*', function(req, res){
 	res.render('404');
