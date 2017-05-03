@@ -12,7 +12,7 @@ router.get('*', function(req, res){
 		client_secret: process.env.CLIENT_SECRET,
 		code: code
 	}}, function(err,httpResponse,body){
-		req.app.set('tokenData', {data});
+		req.app.set('tokenData', {body});
 	})
 
 	res.render('oauth');
