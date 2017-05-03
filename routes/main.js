@@ -16,11 +16,12 @@ router.get('/', function(req, res){
 	request({
 		url: apiCurrentAthlete,
 		headers: {
-		'Bearer': 'request'
+			'Bearer': 'request'
+		}
 	}, function(err, response, body){
 		res.locals.currentAthlete = body;
 		console.log(body);
-	});
+	})
 });
 
 module.exports = router;
