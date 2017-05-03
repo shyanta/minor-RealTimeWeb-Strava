@@ -5,6 +5,7 @@ var router = express.Router();
 
 router.get('/', function(req, res){
 	var data = req.app.get('tokenData');
+	console.log(data);
 	res.locals.access = data;
 
 	res.render('main');
