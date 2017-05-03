@@ -14,9 +14,10 @@ router.get('*', function(req, res){
 		code: code
 	}}, function(err,httpResponse,body){
 		data = body;
+		res.redirect('/main', {data});
 	})
-	req.app.set('tokenData', data);
-	res.render('oauth');
+	// req.app.set('tokenData', data);
+	// res.render('oauth');
 });
 
 module.exports = router;
