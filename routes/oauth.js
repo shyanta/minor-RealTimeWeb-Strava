@@ -8,6 +8,8 @@ router.get('*', function(req, res){
 	var postUrl = 'https://www.strava.com/oauth/token';
 	var data;
 
+	res.render('oauth');
+
 	request.post({url:postUrl, form: {
 		client_id: process.env.CLIENT_ID,
 		client_secret: process.env.CLIENT_SECRET,
@@ -17,7 +19,6 @@ router.get('*', function(req, res){
 		res.redirect('/main', {data});
 	})
 	// req.app.set('tokenData', data);
-	// res.render('oauth');
 });
 
 module.exports = router;
