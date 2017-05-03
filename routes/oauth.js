@@ -1,12 +1,7 @@
 var express = require('express');
 var request = require('request');
-var bodyParser = require('body-parser');
 
 var router = express.Router();
-
-//Use bodyParser to parse to JSON
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
 
 router.get('*', function(req, res){
 	var code = req.query.code;
