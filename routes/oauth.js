@@ -34,7 +34,7 @@ router.get('*', function(req, res){
 		client_secret: process.env.CLIENT_SECRET,
 		code: code
 	}}, function(err,httpResponse,body){
-		console.log(err,httpResponse,body)
+		console.log(body)
 	})
 
 	res.render('oauth');
