@@ -3,7 +3,8 @@ var express = require('express');
 var router = express.Router();
 
 router.get('*', function(req, res){
-	// var code = req.query.code;
+	var code = req.query.code;
+	console.log(code);
 	// var postUrl = 'https://www.strava.com/oauth/token/';
 	//
 	// request.post(postUrl, {
