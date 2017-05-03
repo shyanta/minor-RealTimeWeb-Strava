@@ -15,7 +15,6 @@ router.get('*', function(req, res){
 	}}, function(err,httpResponse,body){
 		data = body
 	})
-	res.render('main');
 	res.redirect('/main', body);
 });
 
