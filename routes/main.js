@@ -17,11 +17,11 @@ router.get('/', function(req, res){
 	request({
 		url: apiCurrentAthlete,
 		headers: {
-			'Bearer': 'request'
+			'Authorization': 'Bearer ' + access_token
 		}
 	}, function(err, response, body){
-		res.locals.currentAthlete = body;
-		console.log(body);
+		res.locals.currentAthlete = JSON.parse(body);
+		console.log(JSON.parse(body));
 	})
 });
 
