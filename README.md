@@ -39,3 +39,4 @@ the interval can't be higher than every 1500 milliseconds.
 
 ## Sources
 -	[Strava API Documentation](http://strava.github.io/api/)
+-	[JSON.stringify data with EJS](http://stackoverflow.com/questions/13788314/express-and-ejs-to-render-a-json)
