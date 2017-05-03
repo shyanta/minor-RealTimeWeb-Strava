@@ -2,6 +2,7 @@
 var express = require('express');
 var path = require('path');
 var ejs = require('ejs');
+var bodyParser = require('body-parser');
 
 // Setup NPM Modules to use (only when needed with the NPM module)
 require('dotenv').config();
@@ -11,6 +12,10 @@ var app = express();
 var indexRouter = require('./routes/index');
 var mainRouter = require('./routes/main');
 var oauthRouter = require('./routes/oauth');
+
+//Use bodyParser to parse to JSON
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 // Set view engine to .ejs and tell app where these files are placed
 app.set('views', path.join(__dirname, 'views'));

@@ -4,10 +4,14 @@ var request = require('request');
 var router = express.Router();
 
 router.get('/', function(req, res){
-	// request('https://www.strava.com/oauth/token', function(error, response, data){
-	//
-	// })
-	console.log(req.app.get('code'));
+	var code = req.app.get('code');
+	var postUrl = 'https://www.strava.com/oauth/token/';
+
+	request.post(postUrl, {
+		client_id: process.env.CLIENT_ID,
+		client_secret: process.env.CLIENT_SECRET,
+		code: code
+	})
 	res.render('main');
 });
 
