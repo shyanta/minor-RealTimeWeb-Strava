@@ -35,9 +35,8 @@ router.get('*', function(req, res){
 		code: code
 	}}, function(err,httpResponse,body){
 		console.log(body)
+		res.redirect('main', body);
 	})
-
-	res.render('oauth');
 });
 
 module.exports = router;
