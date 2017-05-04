@@ -25,6 +25,7 @@ router.get('/', function(req, res){
 		}, function(err, response, body){
 			var dataFriends = JSON.parse(body);
 			res.locals.myFriends = dataFriends;
+			console.log(dataFriends);
 			if (dataFriends.lenght < 10){
 				for (var i = 0; i < dataFriends.length; i++) {
 					request({
