@@ -7,7 +7,8 @@ router.get('/', function(req, res){
 	var data = req.app.get('tokenData');
 	var access_token = data.access_token;
 	var apiCurrentAthlete = 'https://www.strava.com/api/v3/athlete';
-	var apiAthleteFriends = ' https://www.strava.com/api/v3/athlete/friends'
+	var apiAthleteFriends = 'https://www.strava.com/api/v3/athlete/friends';
+	var apiAthleteActivities = 'https://www.strava.com/api/v3/activities/'
 
 	request({
 		url: apiCurrentAthlete,
@@ -22,8 +23,33 @@ router.get('/', function(req, res){
 				'Authorization' : 'Bearer ' + access_token
 			}
 		}, function(err, response, body){
-			res.locals.myFriends = JSON.parse(body);
-			res.render('main');
+			var dataFriends = JSON.parse(body);
+			res.locals.myFriends = dataFriends;
+			if (dataFriends.lenght < 10){
+				for (var i = 0; i < dataFriends.length; i++) {
+					request({
+						url: apiAthleteFriends + dataFriends[i].id,
+						headers: {
+							'Authorization': 'Bearer ' + access_token
+						}
+					}, function(err, response, body){
+						res.locals.friendsActivities = JSON.parse(body);
+						res.render('main');
+					})
+				}
+			} else {
+				for (var i = 0; i < 10; i++) {
+					request({
+						url: apiAthleteFriends + dataFriends[i].id,
+						headers: {
+							'Authorization': 'Bearer ' + access_token
+						}
+					}, function(err, response, body){
+						res.locals.friendsActivities = JSON.parse(body);
+						res.render('main');
+					})
+				}
+			}
 		})
 	})
 
