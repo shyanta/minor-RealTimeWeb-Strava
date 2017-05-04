@@ -22,7 +22,7 @@ router.get('/', function(req, res){
 		res.locals.myData = JSON.parse(body);
 	})
 
-	res.render('main');
+	res.render('main', {myData : myData});
 });
 
 module.exports = router;
