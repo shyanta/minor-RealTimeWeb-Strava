@@ -28,7 +28,7 @@ router.get('/', function(req, res){
 			console.log('All', dataFriends);
 			console.log('First', dataFriends[0]);
 			console.log('First_Id', dataFriends[0].id);
-			if (dataFriends.lenght < 10){
+			if (dataFriends.length < 10){
 				for (var i = 0; i < dataFriends.length; i++) {
 					request({
 						url: apiAthleteActivities + dataFriends[i].id,
