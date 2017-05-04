@@ -16,17 +16,18 @@ router.get('/', function(req, res){
 		}
 	}, function(err, response, body){
 		res.locals.myData = JSON.parse(body);
+		request({
+			url: apiAthleteFriends,
+			headers: {
+				'Authorization' : 'Bearer ' + access_token
+			}
+		}, function(err, response, body){
+			res.locals.myFriends = JSON.parse(body);
+			res.render('main');
+		})
 	})
-	
-	request({
-		url: apiAthleteFriends,
-		headers: {
-			'Authorization' : 'Bearer ' + access_token
-		}
-	}, function(err, response, body){
-		res.locals.myFriends = JSON.parse(body);
-		res.render('main');
-	})
+
+
 
 });
 
