@@ -8,7 +8,6 @@ router.get('/', function(req, res){
 	console.log('Tokendata', data);
 	res.locals.access = data;
 
-	res.render('main');
 	var access_token = data.access_token;
 	console.log(access_token + ' token');
 
@@ -23,6 +22,8 @@ router.get('/', function(req, res){
 		console.log('Mydata', JSON.parse(body));
 		res.locals.accesData = JSON.parse(body);
 	})
+
+	res.render('main');
 });
 
 module.exports = router;
