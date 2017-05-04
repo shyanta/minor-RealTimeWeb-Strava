@@ -9,7 +9,6 @@ router.get('/', function(req, res){
 	res.locals.access = data;
 
 	var access_token = data.access_token;
-	console.log(access_token + ' token');
 
 	var apiCurrentAthlete = 'https://www.strava.com/api/v3/athlete';
 
@@ -20,7 +19,7 @@ router.get('/', function(req, res){
 		}
 	}, function(err, response, body){
 		console.log('Mydata', JSON.parse(body));
-		res.locals.accesData = JSON.parse(body);
+		res.locals.myData = JSON.parse(body);
 	})
 
 	res.render('main');
