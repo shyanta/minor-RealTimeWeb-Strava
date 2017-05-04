@@ -5,12 +5,9 @@ var router = express.Router();
 
 router.get('/', function(req, res){
 	var data = req.app.get('tokenData');
-	console.log('Tokendata', data);
-	res.locals.access = data;
-
 	var access_token = data.access_token;
-
 	var apiCurrentAthlete = 'https://www.strava.com/api/v3/athlete';
+	var apiAthleteFriends = ' https://www.strava.com/api/v3/athlete/friends'
 
 	request({
 		url: apiCurrentAthlete,
@@ -18,8 +15,16 @@ router.get('/', function(req, res){
 			'Authorization': 'Bearer ' + access_token
 		}
 	}, function(err, response, body){
-		console.log('Mydata', JSON.parse(body));
 		res.locals.myData = JSON.parse(body);
+	})
+	
+	request({
+		url: apiAthleteFriends,
+		headers: {
+			'Authorization' : 'Bearer ' + access_token
+		}
+	}, function(err, response, body){
+		res.locals.myFriends = JSON.parse(body);
 		res.render('main');
 	})
 
