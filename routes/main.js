@@ -5,7 +5,7 @@ var router = express.Router();
 
 router.get('/', function(req, res){
 	var data = req.app.get('tokenData');
-	console.log(data);
+	console.log('Tokendata', data);
 	res.locals.access = data;
 
 	res.render('main');
@@ -20,8 +20,8 @@ router.get('/', function(req, res){
 			'Authorization': 'Bearer ' + access_token
 		}
 	}, function(err, response, body){
-		res.locals.currentAthlete = JSON.parse(body);
-		console.log(JSON.parse(body));
+		console.log('Mydata', JSON.parse(body));
+		res.locals.accesData = JSON.parse(body);
 	})
 });
 
