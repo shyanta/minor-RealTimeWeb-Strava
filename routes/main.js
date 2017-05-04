@@ -31,7 +31,7 @@ router.get('/', function(req, res){
 			if (dataFriends.lenght < 10){
 				for (var i = 0; i < dataFriends.length; i++) {
 					request({
-						url: apiAthleteFriends + dataFriends[i].id,
+						url: apiAthleteActivities + dataFriends[i].id,
 						headers: {
 							'Authorization': 'Bearer ' + access_token
 						}
@@ -43,7 +43,7 @@ router.get('/', function(req, res){
 			} else {
 				for (var i = 0; i < 10; i++) {
 					request({
-						url: apiAthleteFriends + dataFriends[i].id,
+						url: apiAthleteActivities + dataFriends[i].id,
 						headers: {
 							'Authorization': 'Bearer ' + access_token
 						}
