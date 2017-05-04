@@ -8,7 +8,8 @@ router.get('/', function(req, res){
 	var access_token = data.access_token;
 	var apiCurrentAthlete = 'https://www.strava.com/api/v3/athlete';
 	var apiAthleteFriends = 'https://www.strava.com/api/v3/athlete/friends';
-	var apiAthleteActivities = 'https://www.strava.com/api/v3/activities/'
+	var apiAthleteActivities = 'https://www.strava.com/api/v3/activities/';
+	var athleteActivities = [];
 
 	request({
 		url: apiCurrentAthlete,
@@ -36,7 +37,8 @@ router.get('/', function(req, res){
 							'Authorization': 'Bearer ' + access_token
 						}
 					}, function(err, response, body){
-						res.locals.friendsActivities = JSON.parse(body);
+						athleteActivities.push(JSON.parse(body));
+						res.locals.friendsActivities = athleteActivities;
 						res.render('main');
 					})
 				}
