@@ -20,9 +20,9 @@ router.get('/', function(req, res){
 	}, function(err, response, body){
 		console.log('Mydata', JSON.parse(body));
 		res.locals.myData = JSON.parse(body);
+		res.render('main');
 	})
 
-	res.render('main');
 });
 
 module.exports = router;
